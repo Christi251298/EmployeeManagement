@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "WPF\WPF.csproj", "{1A83B546-A0CD-4E72-BBCF-1A8E10FB66B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Tests", "WPF.Tests\WPF.Tests.csproj", "{11D398A1-7D5A-45F5-B899-E0EE190BEAE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A83B546-A0CD-4E72-BBCF-1A8E10FB66B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A83B546-A0CD-4E72-BBCF-1A8E10FB66B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A83B546-A0CD-4E72-BBCF-1A8E10FB66B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A83B546-A0CD-4E72-BBCF-1A8E10FB66B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D398A1-7D5A-45F5-B899-E0EE190BEAE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D398A1-7D5A-45F5-B899-E0EE190BEAE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D398A1-7D5A-45F5-B899-E0EE190BEAE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D398A1-7D5A-45F5-B899-E0EE190BEAE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7AE7D577-A8BE-4A36-A84D-A2CC67855C2A}
+	EndGlobalSection
+EndGlobal
