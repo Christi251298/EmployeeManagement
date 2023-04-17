@@ -64,8 +64,8 @@
     SelectedValuePath="Content"
     >
             <ComboBoxItem Content="Choose your gender" />
-            <ComboBoxItem Content="Male" />
-            <ComboBoxItem Content="Female" />
+            <ComboBoxItem Content="male" />
+            <ComboBoxItem Content="female" />
         </ComboBox>
 
         <!--<TextBox Name="status"

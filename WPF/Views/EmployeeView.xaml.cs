@@ -30,6 +30,7 @@ namespace WPF.Views
             txtemail.Clear();
             txtid.Clear();
             txtname.Clear();
+
             MessageBox.Show("Cleared");
         }
     }

@@ -101,20 +101,24 @@ namespace WPF.ViewModels
             try
             {
                 var employee1 = employeeServiceAPI.GetById(CurrentEmployee.id);
-                for (int index = 0; index < EmployeeList.Count; index++)
-                {
+                int index = 0;
+                //for (int index = 0; index < EmployeeList.Count; index++)
+                //{
                     if(CurrentEmployee.id == EmployeeList[index].id)
                     { 
-                        CurrentEmployee = EmployeeList[index];
-                        Message = "Employee found";
-                        break;
+                        CurrentEmployee.name = EmployeeList[index].name;
+                    CurrentEmployee.email = EmployeeList[index].email;
+                    CurrentEmployee.gender = EmployeeList[index].gender;
+                    CurrentEmployee.status = EmployeeList[index].status;
+                    Message = "Employee found";
+                        //break;
                     }
                     else
                     {
                         Message = "employee not found";
                     }
 
-                }
+                //}
 
                 
             }
