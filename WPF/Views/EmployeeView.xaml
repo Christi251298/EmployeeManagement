@@ -90,8 +90,8 @@
                     Content="EDIT" Margin="3" Command="{Binding Path=UpdateCommand}"/>
             <Button Name="delete"
                     Content="DELETE" Margin="3" Command="{Binding Path=DeleteCommand}"/>
-            <Button Name="find"
-                    Content="FIND" Margin="3" Command="{Binding Path=SearchCommand}" />
+            <!--<Button Name="find"
+                    Content="FIND" Margin="3" Command="{Binding Path=SearchCommand}" />-->
             <Button Name="clear"
                     Content="CLEAR" Margin="3"  Click="clear_Click" />
         </StackPanel>
