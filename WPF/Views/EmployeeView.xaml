@@ -46,22 +46,41 @@
         <TextBlock Text="Enter Status"
                    Grid.Row="5"
                    Grid.Column="0" Margin="5,8,5,8" />
-        <TextBox Name="id"
+        <TextBox Name="txtid"
                  Grid.Row="1"
                  Grid.Column="1" Text="{Binding Path=CurrentEmployee.id,Mode=TwoWay}" Margin="5,8,5,8" />
-        <TextBox Name="name"
+        <TextBox Name="txtname"
                  Grid.Row="2"
                  Grid.Column="1" Text="{Binding Path=CurrentEmployee.name,Mode=TwoWay}" Margin="5,8,5,8"/>
-        <TextBox Name="email"
+        <TextBox Name="txtemail"
                  Grid.Row="3"
                  Grid.Column="1" Text="{Binding Path=CurrentEmployee.email,Mode=TwoWay}" Margin="5,8,5,8"/>
-        <TextBox Name="gender"
+        <!--<TextBox Name="gender"
                  Grid.Row="4"
                  Grid.Column="1" Text="{Binding Path=CurrentEmployee.gender
-            ,Mode=TwoWay}" Margin="5,8,5,8"/>
-        <TextBox Name="status"
+            ,Mode=TwoWay}" Margin="5,8,5,8"/>-->
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5,8,5,8"
+    SelectedValue="{Binding CurrentEmployee.gender}" 
+    SelectedValuePath="Content"
+    >
+            <ComboBoxItem Content="Choose your gender" />
+            <ComboBoxItem Content="Male" />
+            <ComboBoxItem Content="Female" />
+        </ComboBox>
+
+        <!--<TextBox Name="status"
                  Grid.Row="5"
-                 Grid.Column="1" Text="{Binding Path=CurrentEmployee.status,Mode=TwoWay}" Margin="5,8,5,8"/>
+                 Grid.Column="1" Text="{Binding Path=CurrentEmployee.status,Mode=TwoWay}" Margin="5,8,5,8"/>-->
+        <ComboBox Grid.Row="5"
+                 Grid.Column="1" Margin="5,8,5,8"
+    SelectedValue="{Binding CurrentEmployee.status}" 
+    SelectedValuePath="Content"
+    >
+            <ComboBoxItem Content="please select" />
+            <ComboBoxItem Content="active" />
+            <ComboBoxItem Content="inactive" />
+        </ComboBox>
+        
         <StackPanel Orientation="Horizontal"
                     Grid.Row="6"
                     Grid.Column="1" Margin="5,8,5,8">
@@ -72,7 +91,9 @@
             <Button Name="delete"
                     Content="DELETE" Margin="3" Command="{Binding Path=DeleteCommand}"/>
             <Button Name="find"
-                    Content="SEARCH" Margin="3" Command="{Binding Path=SearchCommand}" />
+                    Content="FIND" Margin="3" Command="{Binding Path=SearchCommand}" />
+            <Button Name="clear"
+                    Content="CLEAR" Margin="3"  Click="clear_Click" />
         </StackPanel>
         <TextBlock Name="messgae"
                    Grid.Column="1"
@@ -81,7 +102,8 @@
         <DataGrid  x:Name="EmployeeList"
                   AutoGenerateColumns="False"
                   Grid.Row="8" Grid.Column="1"
-                 ItemsSource="{Binding Path=EmployeeList, Mode=TwoWay}" Margin="5,8,5,8" >
+                 ItemsSource="{Binding Path=EmployeeList, Mode=TwoWay}"
+                   SelectedItem="{Binding Path=CurrentEmployee, Mode=TwoWay}" Margin="5,8,5,8" >
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Employee Id"

@@ -24,5 +24,13 @@ namespace WPF.Views
         {
             InitializeComponent();
         }
+
+        private void clear_Click(object sender, RoutedEventArgs e)
+        {
+            txtemail.Clear();
+            txtid.Clear();
+            txtname.Clear();
+            MessageBox.Show("Cleared");
+        }
     }
 }

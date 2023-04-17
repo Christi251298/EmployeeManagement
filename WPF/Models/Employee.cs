@@ -37,22 +37,48 @@ namespace WPF.Models
             get { return Email; }
             set { Email = value; OnPropertyChanged("email"); }
         }
-        private string Gender;
+        //private string Gender;
 
-        public string gender
+        //public string gender
+        //{
+        //    get { return Gender; }
+        //    set { Gender = value; OnPropertyChanged("gender"); }
+        //}
+
+        private String _gender = "Choose your gender";
+        public String gender
         {
-            get { return Gender; }
-            set { Gender = value; OnPropertyChanged("gender"); }
+            get { return _gender; }
+            set
+            {
+                if (value != _gender)
+                {
+                    _gender = value;
+                    OnPropertyChanged("gender");
+                }
+            }
         }
 
-        private string Status;
+        //private string Status;
 
-        public string status
+        //public string status
+        //{
+        //    get { return Status; }
+        //    set { Status = value; OnPropertyChanged("status"); }
+        //}
+        private String _status = "please select";
+        public String status
         {
-            get { return Status; }
-            set { Status = value; OnPropertyChanged("status"); }
+            get { return _status; }
+            set
+            {
+                if (value != _status)
+                {
+                    _status = value;
+                    OnPropertyChanged("status");
+                }
+            }
         }
-
     }
 
 }

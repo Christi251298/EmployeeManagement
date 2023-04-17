@@ -7,7 +7,9 @@ using System.ComponentModel;
 using WPF.Models;
 using System.Collections.ObjectModel;
 using WPF.Commands;
-
+using WPF.ServicesAPI;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace WPF.ViewModels
 {
@@ -29,6 +31,7 @@ namespace WPF.ViewModels
             searchCommand = new RelayCommand(Search);
             updateCommand = new RelayCommand(Update);
             deleteCommand = new RelayCommand(Delete);
+            
         }
         private ObservableCollection<Employee> employeeList;
         public ObservableCollection<Employee> EmployeeList
@@ -38,7 +41,7 @@ namespace WPF.ViewModels
         }
         public async void LoadData()
         {
-           EmployeeList = await employeeServiceAPI.GetEmpDetails();
+           EmployeeList = await employeeServiceAPI.GetAllEmployeeDetails();
           
         }
 
@@ -97,17 +100,23 @@ namespace WPF.ViewModels
         {
             try
             {
-                var employee1 = EmployeeServiceAPI.GetById(CurrentEmployee.id);
+                var employee1 = employeeServiceAPI.GetById(CurrentEmployee.id);
+                for (int index = 0; index < EmployeeList.Count; index++)
+                {
+                    if(CurrentEmployee.id == EmployeeList[index].id)
+                    { 
+                        CurrentEmployee = EmployeeList[index];
+                        Message = "Employee found";
+                        break;
+                    }
+                    else
+                    {
+                        Message = "employee not found";
+                    }
 
-                if(employee1!=null)
-                {
-                    
-                    Message = "Employee found";
                 }
-                else
-                {
-                    Message = "employee not found";
-                }
+
+                
             }
             catch (Exception ex)
             {
@@ -142,13 +151,14 @@ namespace WPF.ViewModels
                             Message = "Updation succcess";
                             break;
                         }
+                        else
+                        {
+                            Message = "updation failed";
+                        }
                     }
                     //LoadData();
                 }
-                else
-                {
-                    Message = "updation failed";
-                }
+                
             }
             catch (Exception ex)
             {
@@ -172,15 +182,16 @@ namespace WPF.ViewModels
                 var deleted = EmployeeServiceAPI.Delete(CurrentEmployee.id);
                 if (deleted != null)
                 {
-                    for (int index = 0; index < EmployeeList.Count; index++)
-                    {
+                    int index = 0;
+                    //for (int index = 0; index < EmployeeList.Count; index++)
+                    //{
                         if (EmployeeList[index].id == CurrentEmployee.id)
                         {
                             EmployeeList.RemoveAt(index);
                             Message = "Employee deleted";
                         }
 
-                    }
+                    //}
                 }
                 else
                 {
@@ -193,5 +204,8 @@ namespace WPF.ViewModels
                 Message = ex.Message; ;
             }
         }
+
+        
+
     } 
 }   

@@ -2,9 +2,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using WPF;
 using WPF.Models;
 using WPF.ViewModels;
+using WPF.ServicesAPI;
 
 namespace WPF.Tests
 {
@@ -17,7 +17,7 @@ namespace WPF.Tests
             EmployeeViewModel employeeViewModel = new EmployeeViewModel();
             EmployeeServiceAPI employeeServiceAPI = new EmployeeServiceAPI();
            ObservableCollection<Employee> employee = new ObservableCollection<Employee>();
-            var userlist = employeeServiceAPI.GetEmpDetails().Result;
+            var userlist = employeeServiceAPI.GetAllEmployeeDetails().Result;
            // Assert.IsNotNull(userlist);
            if(userlist.Count>0)
             {
@@ -35,7 +35,7 @@ namespace WPF.Tests
            Employee employee = new Employee() 
            { id=101,name= "justin",email="justin@gmail.com",gender="male",status="inactive" };
             var newuser =await employeeServiceAPI.CreateEmployee(employee);
-            // Assert.IsNotNull(newuser);
+            // Assert.IsNotNull(newuser);---1
             //Assert.AreEqual<Employee>(employee, newuser);
             Assert.IsTrue(OperatorNotEqualsToo(employee, newuser));
 
@@ -50,6 +50,20 @@ namespace WPF.Tests
         }
 
         [TestMethod]
+        public async Task Test_CreateEmployee_CheckingID()
+        {
+            EmployeeViewModel employeeViewModel = new EmployeeViewModel();
+            EmployeeServiceAPI employeeServiceAPI = new EmployeeServiceAPI();
+            Employee employee = new Employee()
+            { id = 101, name = "justin", email = "justin@gmail.com", gender = "male", status = "inactive" };
+            Employee newuser = await employeeServiceAPI.CreateEmployee(employee);
+            Assert.IsNotNull(newuser.id);
+           
+            
+
+        }
+
+        [TestMethod]
         public void Test_Update()
         {
             EmployeeViewModel employeeViewModel = new EmployeeViewModel();
@@ -60,6 +74,19 @@ namespace WPF.Tests
             Assert.IsNotNull(updateddata);
 
         }
-        
+
+        [TestMethod]
+        public void Test_DeleteEmploye()
+        {
+            EmployeeViewModel employeeViewModel = new EmployeeViewModel();
+            EmployeeServiceAPI employeeServiceAPI = new EmployeeServiceAPI();
+            Employee employee = new Employee()
+            { id = 101, name = "justin", email = "justin@gmail.com", gender = "male", status = "inactive" };
+            var response = EmployeeServiceAPI.Delete(employee.id);
+            Assert.IsNotNull(response);
+
+
+
+        }
     }
 }
