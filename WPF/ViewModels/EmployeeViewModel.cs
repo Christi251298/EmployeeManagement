@@ -186,14 +186,14 @@ namespace WPF.ViewModels
                 var deleted = EmployeeServiceAPI.Delete(CurrentEmployee.id);
                 if (deleted != null)
                 {
-                    int index = 0;
+                   // int index = 0;
                     //for (int index = 0; index < EmployeeList.Count; index++)
                     //{
-                        if (EmployeeList[index].id == CurrentEmployee.id)
-                        {
-                            EmployeeList.RemoveAt(index);
-                            Message = "Employee deleted";
-                        }
+                        //if (EmployeeList[index].id == CurrentEmployee.id)
+                        //{
+                           EmployeeList.Remove(CurrentEmployee);
+                          Message = "Employee deleted";
+                        //}
 
                     //}
                 }
